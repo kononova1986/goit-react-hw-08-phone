@@ -2,8 +2,9 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useId } from 'react';
 import * as Yup from 'yup';
 import css from './ContactForm.module.css';
-import { addContacts } from '../../redux/contactsOps';
+import { addContacts } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
+import Button from '@mui/material/Button';
 
 const initialValues = {
   id: '',
@@ -51,9 +52,9 @@ export default function ContactForm() {
         <label htmlFor={numberId}>Number</label>
         <Field className={css.field} id={numberId} name="number" type="tel" />
         <ErrorMessage style={{ color: 'red' }} name="number" component="span" />
-        <button style={{ marginTop: '15px' }} type="submit">
+        <Button style={{ marginTop: '15px' }} variant="contained" type="submit">
           Add contact
-        </button>
+        </Button>
       </Form>
     </Formik>
   );
