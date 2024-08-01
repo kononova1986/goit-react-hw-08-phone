@@ -24,7 +24,7 @@ const RegisterSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, 'Too short')
     .max(16, 'Too long')
-    .matches(/^[0-9/-/a-z/A-Z]{8,16}$/, 'This is not a valid password!')
+    .matches(/^[0-9/-/a-z/A-Z/@/./,/-/]{8,20}$/, 'This is not a valid password')
     .required('Required'),
 });
 
@@ -46,44 +46,43 @@ export default function RegistrationForm() {
   };
 
   return (
-   
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmitRegistration}
-        validationSchema={RegisterSchema}
-      >
-        <Form className={css.formStyle}>
-          <label htmlFor={nameId}>Name</label>
-          <Field className={css.field} id={nameId} name="name" type="text" />
-          <ErrorMessage style={{ color: 'red' }} name="name" component="span" />
-          <label htmlFor={emailId}>Email</label>
-          <Field
-            className={css.field}
-            id={passwordId}
-            name="email"
-            type="email"
-          />
-          <label htmlFor={passwordId}>Password</label>
-          <Field
-            className={css.field}
-            id={emailId}
-            name="password"
-            type="password"
-          />
-          <ErrorMessage
-            style={{ color: 'red' }}
-            name="error"
-            component="span"
-          />
-          <Button
-            variant="contained"
-            style={{ marginTop: '15px' }}
-            type="submit"
-          >
-            Registration
-          </Button>
-        </Form>
-      </Formik>
-    
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmitRegistration}
+      validationSchema={RegisterSchema}
+    >
+      <Form className={css.formStyle}>
+        <label htmlFor={nameId} style={{ fontSize: '12px' }}>
+          Name
+        </label>
+        <Field className={css.field} id={nameId} name="name" type="text" />
+        <ErrorMessage style={{ color: 'red' }} name="name" component="span" />
+        <label htmlFor={emailId} style={{ fontSize: '12px', marginTop: '5px' }}>
+          Email
+        </label>
+        <Field
+          className={css.field}
+          id={passwordId}
+          name="email"
+          type="email"
+        />
+        <label
+          htmlFor={passwordId}
+          style={{ fontSize: '12px', marginTop: '5px' }}
+        >
+          Password
+        </label>
+        <Field
+          className={css.field}
+          id={emailId}
+          name="password"
+          type="password"
+        />
+        <ErrorMessage style={{ color: 'red' }} name="error" component="span" />
+        <Button variant="contained" style={{ marginTop: '15px' }} type="submit">
+          Registration
+        </Button>
+      </Form>
+    </Formik>
   );
 }

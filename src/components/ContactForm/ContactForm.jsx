@@ -46,10 +46,17 @@ export default function ContactForm() {
       validationSchema={ContactSchema}
     >
       <Form className={css.formStyle}>
-        <label htmlFor={nameId}>Name</label>
+        <label htmlFor={nameId} style={{ fontSize: '12px' }}>
+          Name
+        </label>
         <Field className={css.field} id={nameId} name="name" type="text" />
         <ErrorMessage style={{ color: 'red' }} name="name" component="span" />
-        <label htmlFor={numberId}>Number</label>
+        <label
+          htmlFor={numberId}
+          style={{ fontSize: '12px', marginTop: '5px' }}
+        >
+          Number
+        </label>
         <Field className={css.field} id={numberId} name="number" type="tel" />
         <ErrorMessage style={{ color: 'red' }} name="number" component="span" />
         <Button style={{ marginTop: '15px' }} variant="contained" type="submit">

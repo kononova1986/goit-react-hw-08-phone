@@ -7,7 +7,16 @@ export default function ContactList() {
   const visibleInfo = useSelector(selectVisibleContact);
 
   return (
-    <ul className={css.list}>
+    <ul
+      className={css.list}
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       {visibleInfo.map(info => (
         <li key={info.id}>
           <Contact info={info} />

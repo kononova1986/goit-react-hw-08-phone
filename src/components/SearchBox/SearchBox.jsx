@@ -18,7 +18,9 @@ export default function SearchBox() {
         onChange={handleChange}
         className={css.inputSearch}
       />
-      <p style={{ marginTop: '5px' }}>Find contacts by name</p>
+      <p style={{ fontSize: '12px', marginTop: '5px' }}>
+        Find contacts by name
+      </p>
     </div>
   );
 }

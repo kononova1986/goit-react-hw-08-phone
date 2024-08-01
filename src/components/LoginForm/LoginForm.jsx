@@ -20,7 +20,7 @@ const ContactSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, 'Too short')
     .max(16, 'Too long')
-    .matches(/^[0-9/-/a-z/A-Z]{8,16}$/, 'This is not a valid password!')
+    .matches(/^[0-9/-/a-z/A-Z/@/./,/]{8,20}$/, 'This is not a valid password')
     .required('Required'),
 });
 
@@ -47,14 +47,21 @@ export default function RegistrationForm() {
         validationSchema={ContactSchema}
       >
         <Form className={css.formStyle}>
-          <label htmlFor={emailId}>Email</label>
+          <label style={{ fontSize: '12px' }} htmlFor={emailId}>
+            Email
+          </label>
           <Field className={css.field} id={emailId} name="email" type="email" />
           <ErrorMessage
             style={{ color: 'red' }}
             name="email"
             component="span"
           />
-          <label htmlFor={passwordId}>Password</label>
+          <label
+            style={{ fontSize: '12px', marginTop: '5px' }}
+            htmlFor={passwordId}
+          >
+            Password
+          </label>
           <Field
             className={css.field}
             id={passwordId}
